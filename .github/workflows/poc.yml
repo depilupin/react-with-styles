@@ -1,0 +1,17 @@
+name: 🚨 RCE Demo PoC
+
+on:
+  pull_request_target:
+
+jobs:
+  rce-demo:
+    name: "🔥 Arbitrary Code Execution (Proof)"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say hello
+        run: echo "✅ This proves arbitrary code execution!"
+      - name: Show env
+        run: |
+          echo "Actor: $GITHUB_ACTOR"
+          echo "Repo: $GITHUB_REPOSITORY"
+          uname -a
